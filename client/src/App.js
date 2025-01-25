@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import SymptomTracker from './components/SymptomTracker';
+import MedicationReminders from './components/MedicationReminders';
+import AppointmentCalendar from './components/AppointmentCalendar';
 
+// Remove any duplicate App component declarations
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/symptoms" element={<SymptomTracker />} />
+        <Route path="/medications" element={<MedicationReminders />} />
+        <Route path="/appointments" element={<AppointmentCalendar />} />
+      </Routes>
+    </Router>
   );
 }
 
